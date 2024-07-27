@@ -25,6 +25,11 @@ export default function Home() {
         setIsModalOpen(true);
     };
 
+    const handleAddTaskClick = () => {
+        setSelectedTask(undefined);
+        setIsModalOpen(true);
+    };
+
     const handleModalClose = () => {
         setSelectedTask(undefined);
         setIsModalOpen(false);
@@ -35,6 +40,8 @@ export default function Home() {
             await updateTask(task._id, task);
             const updatedTasks = tasks.map(t => (t._id === task._id ? task : t));
             setTasks(updatedTasks);
+        } else {
+            // Add logic for creating a new task
         }
     };
 
@@ -42,8 +49,11 @@ export default function Home() {
         <div className={styles.container}>
             <h1 className={styles.title}>My Task Board</h1>
             <p className={styles.subtitle}>Tasks to keep organised</p>
-            <TaskForm />
             <TaskList tasks={tasks} onTaskClick={handleTaskClick} />
+            <div className={styles.addTaskCard} onClick={handleAddTaskClick}>
+                <img src="./icons/Add_round_duotone.svg" alt="Add Task Icon" />
+                <span>Add new task</span>
+            </div>
             <TaskModal
                 isOpen={isModalOpen}
                 onClose={handleModalClose}

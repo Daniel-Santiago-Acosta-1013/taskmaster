@@ -19,6 +19,10 @@ const TaskModal = ({ isOpen, onClose, task, onSave }: TaskModalProps) => {
             setTitle(task.title);
             setDescription(task.description);
             setCompleted(task.completed);
+        } else {
+            setTitle('');
+            setDescription('');
+            setCompleted(false);
         }
     }, [task]);
 
