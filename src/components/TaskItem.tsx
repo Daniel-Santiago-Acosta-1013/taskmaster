@@ -1,4 +1,5 @@
 import { Task } from '../types/task';
+import styles from '../styles/Home.module.css';
 
 interface TaskItemProps {
   task: Task;
@@ -6,7 +7,7 @@ interface TaskItemProps {
 
 const TaskItem = ({ task }: TaskItemProps) => {
   return (
-    <div>
+    <div className={styles.taskItem}>
       <h3>{task.title}</h3>
       <p>{task.description}</p>
       <p>{task.completed ? 'Completed' : 'Not Completed'}</p>

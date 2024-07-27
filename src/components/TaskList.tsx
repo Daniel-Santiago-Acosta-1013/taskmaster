@@ -1,15 +1,19 @@
 import { Task } from '../types/task';
 import TaskItem from './TaskItem';
+import styles from '../styles/Home.module.css';
 
 interface TaskListProps {
     tasks: Task[];
+    onTaskClick: (task: Task) => void;
 }
 
-const TaskList = ({ tasks }: TaskListProps) => {
+const TaskList = ({ tasks, onTaskClick }: TaskListProps) => {
     return (
-        <div>
+        <div className={styles.taskList}>
             {tasks.map((task) => (
-                <TaskItem key={task._id} task={task} />
+                <div key={task._id} onClick={() => onTaskClick(task)}>
+                    <TaskItem task={task} />
+                </div>
             ))}
         </div>
     );
