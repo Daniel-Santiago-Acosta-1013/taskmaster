@@ -15,11 +15,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             try {
                 const task = await Task.findById(id);
                 if (!task) {
-                    return res.status(404).json({ success: false });
+                    return res.status(404).json({ success: false, message: 'Task not found' });
                 }
                 res.status(200).json({ success: true, data: task });
             } catch (error) {
-                res.status(400).json({ success: false });
+                if (error instanceof Error) {
+                    res.status(400).json({ success: false, message: error.message });
+                } else {
+                    res.status(400).json({ success: false, message: 'An unknown error occurred' });
+                }
             }
             break;
         case 'PUT':
@@ -29,26 +33,52 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                     runValidators: true,
                 });
                 if (!task) {
-                    return res.status(404).json({ success: false });
+                    return res.status(404).json({ success: false, message: 'Task not found' });
                 }
                 res.status(200).json({ success: true, data: task });
             } catch (error) {
-                res.status(400).json({ success: false });
+                if (error instanceof Error) {
+                    res.status(400).json({ success: false, message: error.message });
+                } else {
+                    res.status(400).json({ success: false, message: 'An unknown error occurred' });
+                }
+            }
+            break;
+        case 'PATCH':
+            try {
+                const task = await Task.findByIdAndUpdate(id, req.body, {
+                    new: true,
+                    runValidators: true,
+                });
+                if (!task) {
+                    return res.status(404).json({ success: false, message: 'Task not found' });
+                }
+                res.status(200).json({ success: true, data: task });
+            } catch (error) {
+                if (error instanceof Error) {
+                    res.status(400).json({ success: false, message: error.message });
+                } else {
+                    res.status(400).json({ success: false, message: 'An unknown error occurred' });
+                }
             }
             break;
         case 'DELETE':
             try {
                 const deletedTask = await Task.deleteOne({ _id: id });
                 if (!deletedTask) {
-                    return res.status(404).json({ success: false });
+                    return res.status(404).json({ success: false, message: 'Task not found' });
                 }
                 res.status(200).json({ success: true, data: {} });
             } catch (error) {
-                res.status(400).json({ success: false });
+                if (error instanceof Error) {
+                    res.status(400).json({ success: false, message: error.message });
+                } else {
+                    res.status(400).json({ success: false, message: 'An unknown error occurred' });
+                }
             }
             break;
         default:
-            res.status(400).json({ success: false });
+            res.status(400).json({ success: false, message: 'Method not allowed' });
             break;
     }
 };
