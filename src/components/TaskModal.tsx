@@ -42,21 +42,32 @@ const TaskModal = ({ isOpen, onClose, task, onSave }: TaskModalProps) => {
     return (
         <div className={styles.modal}>
             <div className={styles.modalContent}>
-                <span className={styles.close} onClick={onClose}>&times;</span>
-                <h2>{task ? 'Edit Task' : 'New Task'}</h2>
-                <input
-                    type="text"
-                    placeholder="Title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    className={styles.input}
-                />
-                <textarea
-                    placeholder="Description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    className={styles.textarea}
-                />
+                <div className=''>
+                    <span className={styles.close} onClick={onClose}><img src="./icons/close_ring_duotone-1.svg" alt="" /></span>
+                    <h2>{task ? 'Edit Task' : 'New Task'}</h2>
+                </div>
+
+                <div className={styles.formInput}>
+                    <label>Task name</label>
+                    <input
+                        type="text"
+                        placeholder="Title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        className={styles.input}
+                    />
+                </div>
+
+                <div className={styles.formInput}>
+                    <label>Description</label>
+                    <textarea
+                        placeholder="Enter a short description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        className={styles.textarea}
+                    />
+                </div>
+
                 <button onClick={handleSubmit} className={styles.addButton}>
                     {task ? 'Save Changes' : 'Add Task'}
                 </button>
