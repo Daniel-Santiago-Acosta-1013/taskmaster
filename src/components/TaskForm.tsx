@@ -5,9 +5,9 @@ const TaskForm = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await createTask({ title, description });
+        await createTask({ title, description, completed: false });
         setTitle('');
         setDescription('');
     };

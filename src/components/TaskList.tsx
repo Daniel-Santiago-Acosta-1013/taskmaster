@@ -1,6 +1,11 @@
+import { Task } from '../types/task';
 import TaskItem from './TaskItem';
 
-const TaskList = ({ tasks }) => {
+interface TaskListProps {
+    tasks: Task[];
+}
+
+const TaskList = ({ tasks }: TaskListProps) => {
     return (
         <div>
             {tasks.map((task) => (
