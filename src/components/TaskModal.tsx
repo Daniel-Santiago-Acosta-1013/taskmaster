@@ -90,8 +90,8 @@ const TaskModal = ({ isOpen, onClose, task, onSave }: TaskModalProps) => {
                                     checked={status === option.value}
                                     onChange={() => setStatus(option.value as 'In Progress' | 'Completed' | "Won't do")}
                                 />
+                                <img src={option.icon} alt={option.label} style={{ backgroundColor: option.color }}/>
                                 <label htmlFor={option.value} >
-                                    <img src={option.icon} alt={option.label} style={{ backgroundColor: option.color }}/>
                                     {option.label}
                                 </label>
                             </div>

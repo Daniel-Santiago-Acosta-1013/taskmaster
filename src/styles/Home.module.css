@@ -91,12 +91,15 @@
 }
 
 .taskItem {
+    display: flex;
+    gap: 20px;
     background-color: #fff;
     border: 1px solid #eee;
     border-radius: 8px;
-    padding: 15px;
+    padding: 25px;
     margin-bottom: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: flex-start;
 }
 
 .taskItem h3 {
@@ -159,15 +162,17 @@
 .statusOptions {
     display: flex;
     gap: 10px;
+    margin-top: 20px;
 }
 
 .statusOption {
     display: flex;
+    width: 130px;
     align-items: center;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    border: solid 1px #E3E8EF;
 }
 
 .statusOption input {
@@ -176,6 +181,8 @@
 
 .statusOption img {
     margin-right: 5px;
+    border-radius: 5px;
+    width: 30px;
 }
 
 .statusOption label {
