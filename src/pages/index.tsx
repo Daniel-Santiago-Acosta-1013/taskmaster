@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import TaskList from '../components/TaskList';
-import TaskForm from '../components/TaskForm';
-import { getTasks, updateTask } from '../services/taskService';
+import { getTasks, updateTask, createTask } from '../services/taskService';
 import styles from '../styles/Home.module.css';
 import TaskModal from '../components/TaskModal';
 import { Task } from '../types/task';
@@ -37,12 +36,18 @@ export default function Home() {
 
     const handleSaveTask = async (task: Task) => {
         if (task._id) {
-            await updateTask(task._id, task);
-            const updatedTasks = tasks.map(t => (t._id === task._id ? task : t));
-            setTasks(updatedTasks);
+            const updatedTask = await updateTask(task._id, task);
+            if (updatedTask) {
+                const updatedTasks = tasks.map(t => (t._id === task._id ? updatedTask : t));
+                setTasks(updatedTasks);
+            }
         } else {
-            // Add logic for creating a new task
+            const newTask = await createTask(task);
+            if (newTask) {
+                setTasks([...tasks, newTask]);
+            }
         }
+        handleModalClose();
     };
 
     return (

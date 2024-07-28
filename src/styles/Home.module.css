@@ -137,6 +137,13 @@
     flex-direction: column;
 }
 
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
 .close {
     float: right;
     font-size: 28px;

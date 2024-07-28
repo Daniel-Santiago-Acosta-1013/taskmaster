@@ -42,8 +42,10 @@ const TaskModal = ({ isOpen, onClose, task, onSave }: TaskModalProps) => {
     return (
         <div className={styles.modal}>
             <div className={styles.modalContent}>
-                <div className=''>
-                    <span className={styles.close} onClick={onClose}><img src="./icons/close_ring_duotone-1.svg" alt="" /></span>
+                <div className={styles.modalHeader}>
+                    <span className={styles.close} onClick={onClose}>
+                        <img src="./icons/close_ring_duotone-1.svg" alt="Close" />
+                    </span>
                     <h2>{task ? 'Edit Task' : 'New Task'}</h2>
                 </div>
 
