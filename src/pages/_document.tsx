@@ -6,6 +6,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="icon" href="/favicon.ico" />
+          <title>Task Management</title>
         </Head>
         <body>
           <Main />
