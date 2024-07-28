@@ -154,6 +154,33 @@
     border-radius: 10px;
 }
 
+
+/* New styles for status options */
+.statusOptions {
+    display: flex;
+    gap: 10px;
+}
+
+.statusOption {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.statusOption input {
+    display: none;
+}
+
+.statusOption img {
+    margin-right: 5px;
+}
+
+.statusOption label {
+    cursor: pointer;
+}
 .close:hover,
 .close:focus {
     color: black;

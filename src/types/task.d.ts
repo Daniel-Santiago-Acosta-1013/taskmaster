@@ -3,6 +3,7 @@ export interface Task {
     title: string;
     description: string;
     completed: boolean;
+    status: 'In Progress' | 'Completed' | "Won't do";
 }
 
 export interface ApiResponse<T> {

@@ -9,20 +9,26 @@ interface TaskModalProps {
     onSave: (task: Task) => void;
 }
 
+const statusOptions = [
+    { value: 'In Progress', label: 'In Progress', color: '#E9A23B', icon: './icons/Time_atack_duotone.svg' },
+    { value: 'Completed', label: 'Completed', color: '#32D657', icon: './icons/Done_round_duotone.svg' },
+    { value: "Won't do", label: "Won't do", color: '#DD524C', icon: './icons/close_ring_duotone.svg' }
+];
+
 const TaskModal = ({ isOpen, onClose, task, onSave }: TaskModalProps) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [completed, setCompleted] = useState(false);
+    const [status, setStatus] = useState<'In Progress' | 'Completed' | "Won't do">('In Progress');
 
     useEffect(() => {
         if (task) {
             setTitle(task.title);
             setDescription(task.description);
-            setCompleted(task.completed);
+            setStatus(task.status);
         } else {
             setTitle('');
             setDescription('');
-            setCompleted(false);
+            setStatus('In Progress');
         }
     }, [task]);
 
@@ -31,7 +37,8 @@ const TaskModal = ({ isOpen, onClose, task, onSave }: TaskModalProps) => {
             ...task,
             title,
             description,
-            completed: completed || false
+            status,
+            completed: task?.completed || false
         };
         onSave(updatedTask);
         onClose();
@@ -68,6 +75,28 @@ const TaskModal = ({ isOpen, onClose, task, onSave }: TaskModalProps) => {
                         onChange={(e) => setDescription(e.target.value)}
                         className={styles.textarea}
                     />
+                </div>
+
+                <div className={styles.formInput}>
+                    <label>Status</label>
+                    <div className={styles.statusOptions}>
+                        {statusOptions.map((option) => (
+                            <div key={option.value} className={styles.statusOption} >
+                                <input
+                                    type="radio"
+                                    id={option.value}
+                                    name="status"
+                                    value={option.value}
+                                    checked={status === option.value}
+                                    onChange={() => setStatus(option.value as 'In Progress' | 'Completed' | "Won't do")}
+                                />
+                                <label htmlFor={option.value} >
+                                    <img src={option.icon} alt={option.label} style={{ backgroundColor: option.color }}/>
+                                    {option.label}
+                                </label>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 <button onClick={handleSubmit} className={styles.addButton}>
