@@ -123,21 +123,22 @@
     overflow: auto;
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 }
 
 .modalContent {
     background-color: #fefefe;
-    margin: auto;
+    margin: 0px 20px;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
+    width: 100%;
+    max-width: 600px;
     border-radius: 8px;
     position: relative;
     display: flex;
     flex-direction: column;
+    height: 90%;
 }
 
 .modalHeader {
@@ -157,6 +158,14 @@
     border-radius: 10px;
 }
 
+/* Additional styles for responsive design */
+@media (max-width: 768px) {
+    .modalContent {
+        width: 90%;
+        height: none;
+        margin: auto;
+    }
+}
 
 /* New styles for status options */
 .statusOptions {
