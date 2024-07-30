@@ -89,7 +89,7 @@ const TaskModal = ({ isOpen, onClose, task, onSave, onDelete }: TaskModalProps) 
                     <label>Status</label>
                     <div className={styles.statusOptions}>
                         {statusOptions.map((option) => (
-                            <div key={option.value} className={styles.statusOption} >
+                            <div key={option.value} className={`${styles.statusOption} ${status === option.value ? styles.selectedStatus : ''}`}>
                                 <input
                                     type="radio"
                                     id={option.value}

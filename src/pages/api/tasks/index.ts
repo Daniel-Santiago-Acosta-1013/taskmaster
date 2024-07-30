@@ -38,7 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             break;
         case 'PUT':
             try {
-                const task = await Task.updateMany({}, req.body, {
+                const task = await Task.findByIdAndUpdate(req.query.id, req.body, {
                     new: true,
                     runValidators: true,
                 });
@@ -52,7 +52,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             break;
         case 'PATCH':
             try {
-                const task = await Task.updateMany({}, req.body, {
+                const task = await Task.findByIdAndUpdate(req.query.id, req.body, {
                     new: true,
                     runValidators: true,
                 });

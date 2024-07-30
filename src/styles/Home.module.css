@@ -218,3 +218,28 @@
     gap: 10px;
     margin-top: 20px;
 }
+
+.statusOptions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.statusOption {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.statusOption img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.selectedStatus {
+    border: 2px solid #000;
+    background-color: rgba(0, 0, 0, 0.1);
+}
