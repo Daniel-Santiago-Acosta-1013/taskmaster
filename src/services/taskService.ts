@@ -1,42 +1,44 @@
-import api from './api';
-import { Task, ApiResponse } from '../types/task';
+import axios from 'axios';
+import { Task } from '../types/task';
 
-export const getTasks = async (): Promise<Task[] | null> => {
+const API_URL = '/api/tasks';
+
+export const getTasks = async () => {
     try {
-        const response = await api.get<ApiResponse<Task[]>>('/tasks');
+        const response = await axios.get(API_URL);
         return response.data.data;
     } catch (error) {
         console.error(error);
-        return null;
+        return error;
     }
 };
 
-export const createTask = async (task: Task): Promise<Task | null> => {
+export const createTask = async (task: Task) => {
     try {
-        const response = await api.post<ApiResponse<Task>>('/tasks', task);
+        const response = await axios.post(API_URL, task);
         return response.data.data;
     } catch (error) {
         console.error(error);
-        return null;
+        return error;
     }
 };
 
-export const updateTask = async (id: string, task: Partial<Task>): Promise<Task | null> => {
+export const updateTask = async (id: string, task: Task) => {
     try {
-        const response = await api.put<ApiResponse<Task>>(`/tasks/${id}`, task);
+        const response = await axios.put(`${API_URL}/${id}`, task);
         return response.data.data;
     } catch (error) {
         console.error(error);
-        return null;
+        return error;
     }
 };
 
-export const deleteTask = async (id: string): Promise<Task | null> => {
+export const deleteTask = async (id: string) => {
     try {
-        const response = await api.delete<ApiResponse<Task>>(`/tasks/${id}`);
+        const response = await axios.delete(`${API_URL}/${id}`);
         return response.data.data;
     } catch (error) {
         console.error(error);
-        return null;
+        return error;
     }
 };

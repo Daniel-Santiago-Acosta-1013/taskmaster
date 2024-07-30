@@ -24,10 +24,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 res.status(400).json({ success: false });
             }
             break;
-
         case 'DELETE':
             try {
-                const deletedTask = await Task.deleteMany({});
+                const { id } = req.query;
+                const deletedTask = await Task.findByIdAndDelete(id);
                 if (!deletedTask) {
                     return res.status(404).json({ success: false, message: 'Task not found' });
                 }
@@ -35,7 +35,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             } catch (error) {
                 res.status(400).json({ success: false });
             }
-            break
+            break;
         case 'PUT':
             try {
                 const task = await Task.updateMany({}, req.body, {
@@ -63,7 +63,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             } catch (error) {
                 res.status(400).json({ success: false });
             }
-            break
+            break;
         default:
             res.status(400).json({ success: false });
             break;
