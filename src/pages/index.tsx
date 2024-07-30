@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import TaskList from '../components/TaskList';
 import { getTasks, updateTask, createTask, deleteTask } from '../services/taskService';
-import styles from '../styles/Home.module.css';
 import TaskModal from '../components/TaskModal';
 import { Task } from '../types/task';
+import Swal from 'sweetalert2';
+import styles from '../styles/Home.module.css';
 
 export default function Home() {
     const [tasks, setTasks] = useState<Task[]>([]);
@@ -35,19 +36,26 @@ export default function Home() {
     };
 
     const handleSaveTask = async (task: Task) => {
-        if (task._id) {
-            const updatedTask = await updateTask(task._id, task);
-            if (updatedTask) {
-                const updatedTasks = tasks.map(t => (t._id === task._id ? updatedTask : t));
-                setTasks(updatedTasks);
+        try {
+            if (task._id) {
+                const updatedTask = await updateTask(task._id, task);
+                if (updatedTask) {
+                    const updatedTasks = tasks.map(t => (t._id === task._id ? updatedTask : t));
+                    setTasks(updatedTasks);
+                    Swal.fire('Success', 'Task updated successfully', 'success');
+                }
+            } else {
+                const newTask = await createTask(task);
+                if (newTask) {
+                    setTasks([...tasks, newTask]);
+                    Swal.fire('Success', 'Task created successfully', 'success');
+                }
             }
-        } else {
-            const newTask = await createTask(task);
-            if (newTask) {
-                setTasks([...tasks, newTask]);
-            }
+        } catch (error) {
+            Swal.fire('Error', 'An error occurred while saving the task', 'error');
+        } finally {
+            handleModalClose();
         }
-        handleModalClose();
     };
 
     const handleDeleteTask = async (id: string) => {

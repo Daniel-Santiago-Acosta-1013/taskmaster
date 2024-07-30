@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Task } from '../types/task';
+import Swal from 'sweetalert2';
 import styles from '../styles/Home.module.css';
 
 interface TaskModalProps {
@@ -47,8 +48,21 @@ const TaskModal = ({ isOpen, onClose, task, onSave, onDelete }: TaskModalProps) 
 
     const handleDelete = () => {
         if (task && task._id) {
-            onDelete(task._id);
-            onClose();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You won\'t be able to revert this!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed && task._id) {
+                    onDelete(task._id);
+                    onClose();
+                    Swal.fire('Deleted!', 'Your task has been deleted.', 'success');
+                }
+            });
         }
     };
 

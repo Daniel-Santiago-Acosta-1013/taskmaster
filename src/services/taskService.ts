@@ -26,7 +26,7 @@ export const createTask = async (task: Task) => {
 export const updateTask = async (id: string, task: Task) => {
     try {
         const response = await axios.put(`${API_URL}/${id}`, task);
-        return response.data.data;
+        return response.data.data; 
     } catch (error) {
         console.error(error);
         return error;
