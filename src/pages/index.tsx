@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import TaskList from '../components/TaskList';
-import { getTasks, updateTask, createTask } from '../services/taskService';
+import { getTasks, updateTask, createTask, deleteTask } from '../services/taskService';
 import styles from '../styles/Home.module.css';
 import TaskModal from '../components/TaskModal';
 import { Task } from '../types/task';
@@ -50,6 +50,14 @@ export default function Home() {
         handleModalClose();
     };
 
+    const handleDeleteTask = async (id: string) => {
+        const deletedTask = await deleteTask(id);
+        if (deletedTask) {
+            const updatedTasks = tasks.filter(t => t._id !== id);
+            setTasks(updatedTasks);
+        }
+    };
+
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>My Task Board</h1>
@@ -64,6 +72,7 @@ export default function Home() {
                 onClose={handleModalClose}
                 task={selectedTask}
                 onSave={handleSaveTask}
+                onDelete={handleDeleteTask}
             />
         </div>
     );

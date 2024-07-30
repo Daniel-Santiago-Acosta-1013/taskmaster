@@ -7,6 +7,7 @@ interface TaskModalProps {
     onClose: () => void;
     task?: Task;
     onSave: (task: Task) => void;
+    onDelete: (id: string) => void;
 }
 
 const statusOptions = [
@@ -15,7 +16,7 @@ const statusOptions = [
     { value: "Won't do", label: "Won't do", color: '#DD524C', icon: './icons/close_ring_duotone.svg' }
 ];
 
-const TaskModal = ({ isOpen, onClose, task, onSave }: TaskModalProps) => {
+const TaskModal = ({ isOpen, onClose, task, onSave, onDelete }: TaskModalProps) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState<'In Progress' | 'Completed' | "Won't do">('In Progress');
@@ -42,6 +43,13 @@ const TaskModal = ({ isOpen, onClose, task, onSave }: TaskModalProps) => {
         };
         onSave(updatedTask);
         onClose();
+    };
+
+    const handleDelete = () => {
+        if (task && task._id) {
+            onDelete(task._id);
+            onClose();
+        }
     };
 
     if (!isOpen) return null;
@@ -90,7 +98,7 @@ const TaskModal = ({ isOpen, onClose, task, onSave }: TaskModalProps) => {
                                     checked={status === option.value}
                                     onChange={() => setStatus(option.value as 'In Progress' | 'Completed' | "Won't do")}
                                 />
-                                <img src={option.icon} alt={option.label} style={{ backgroundColor: option.color }}/>
+                                <img src={option.icon} alt={option.label} style={{ backgroundColor: option.color }} />
                                 <label htmlFor={option.value} >
                                     {option.label}
                                 </label>
@@ -99,9 +107,16 @@ const TaskModal = ({ isOpen, onClose, task, onSave }: TaskModalProps) => {
                     </div>
                 </div>
 
-                <button onClick={handleSubmit} className={styles.addButton}>
-                    {task ? 'Save Changes' : 'Add Task'}
-                </button>
+                <div className={styles.buttonsContainer}>
+                    <button onClick={handleSubmit} className={styles.addButton}>
+                        {task ? 'Save Changes' : 'Add Task'}
+                    </button>
+                    {task && (
+                        <button onClick={handleDelete} className={styles.deleteButton}>
+                            Delete Task
+                        </button>
+                    )}
+                </div>
             </div>
         </div>
     );

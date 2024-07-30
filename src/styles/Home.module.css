@@ -78,7 +78,6 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 10px;
 }
 
 .addButton:hover {
@@ -196,4 +195,26 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.deleteButton {
+    background-color: #DD524C;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.deleteButton:hover {
+    background-color: #C6453D;
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
 }
