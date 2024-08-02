@@ -1,6 +1,6 @@
 import { Watch } from 'react-loader-spinner';
 import { createPortal } from 'react-dom';
-import styles from '../styles/Home.module.css';
+import styles from './Loader.module.css';
 
 const Loader = () => {
     return createPortal(

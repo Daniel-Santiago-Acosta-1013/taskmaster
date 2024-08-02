@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import TaskList from '../components/TaskList';
+import TaskList from '../components/TaskList/TaskList';
 import { getTasks, updateTask, createTask, deleteTask } from '../services/taskService';
-import TaskModal from '../components/TaskModal';
+import TaskModal from '../components/TaskModal/TaskModal';
 import { Task } from '../types/task';
 import Swal from 'sweetalert2';
-import Loader from '../components/Loader';
+import Loader from '../components/Loader/Loader';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {

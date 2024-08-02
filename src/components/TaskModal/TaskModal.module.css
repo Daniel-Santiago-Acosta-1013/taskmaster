@@ -1,0 +1,193 @@
+.modal {
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.modalContent {
+    background-color: #fefefe;
+    margin: 0px 20px;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    border: solid 1px #E3E8EF;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+/* New styles for status options */
+.statusOptions {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+    justify-items: start;
+}
+
+.statusOption {
+    display: flex;
+    width: 130px;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: solid 1px #E3E8EF;
+}
+
+.statusOption input {
+    display: none;
+}
+
+.input,
+.textarea {
+    width: 96%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.textarea {
+    resize: none;
+    height: 140px;
+}
+
+.addButton {
+    padding: 10px;
+    background-color: #ffbe0b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.addButton:hover {
+    background-color: #ffa800;
+}
+
+.deleteButton {
+    background-color: #DD524C;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.deleteButton:hover {
+    background-color: #C6453D;
+}
+
+.statusOption img {
+    margin-right: 5px;
+    border-radius: 5px;
+    width: 30px;
+}
+
+.statusOption label {
+    cursor: pointer;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.deleteButton {
+    background-color: #DD524C;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.deleteButton:hover {
+    background-color: #C6453D;
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.statusOptions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.statusOption {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.statusOption img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.selectedStatus {
+    border: 2px solid #000;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.formInput {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 4px;
+    align-items: flex-start;
+}
+
+/* Additional styles for responsive design */
+@media (max-width: 768px) {
+    .modalContent {
+        width: 90%;
+        height: none;
+        margin: auto;
+    }
+}
+

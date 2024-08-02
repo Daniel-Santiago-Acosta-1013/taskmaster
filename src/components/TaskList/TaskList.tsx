@@ -1,6 +1,6 @@
-import { Task } from '../types/task';
-import TaskItem from './TaskItem';
-import styles from '../styles/Home.module.css';
+import { Task } from '../../types/task';
+import TaskItem from '../TaskItem/TaskItem';
+import styles from './TaskList.module.css';
 
 interface TaskListProps {
     tasks: Task[];

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Task } from '../types/task';
+import { Task } from '../../types/task';
 import Swal from 'sweetalert2';
-import styles from '../styles/Home.module.css';
+import styles from './TaskModal.module.css';
 
 interface TaskModalProps {
     isOpen: boolean;
