@@ -35,6 +35,26 @@ const TaskModal = ({ isOpen, onClose, task, onSave, onDelete }: TaskModalProps) 
     }, [task]);
 
     const handleSubmit = () => {
+        if (!title.trim() || !description.trim()) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Please fill out both the title and description.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+
+        if (!status) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Please select a status option.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+
         const updatedTask: Task = {
             ...task,
             title,
