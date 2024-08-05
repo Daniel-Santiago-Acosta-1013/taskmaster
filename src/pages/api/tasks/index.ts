@@ -13,7 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 const tasks = await Task.find({});
                 res.status(200).json({ success: true, data: tasks });
             } catch (error) {
-                res.status(400).json({ success: false });
+                res.status(400).json({ success: false, message: error instanceof Error ? error.message : 'An unknown error occurred' });
             }
             break;
         case 'POST':
@@ -21,7 +21,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 const task = await Task.create(req.body);
                 res.status(201).json({ success: true, data: task });
             } catch (error) {
-                res.status(400).json({ success: false });
+                res.status(400).json({ success: false, message: error instanceof Error ? error.message : 'An unknown error occurred' });
             }
             break;
         case 'DELETE':
@@ -33,7 +33,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 }
                 res.status(200).json({ success: true, data: {} });
             } catch (error) {
-                res.status(400).json({ success: false });
+                res.status(400).json({ success: false, message: error instanceof Error ? error.message : 'An unknown error occurred' });
             }
             break;
         case 'PUT':
@@ -47,7 +47,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 }
                 res.status(200).json({ success: true, data: task });
             } catch (error) {
-                res.status(400).json({ success: false });
+                res.status(400).json({ success: false, message: error instanceof Error ? error.message : 'An unknown error occurred' });
             }
             break;
         case 'PATCH':
@@ -61,11 +61,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 }
                 res.status(200).json({ success: true, data: task });
             } catch (error) {
-                res.status(400).json({ success: false });
+                res.status(400).json({ success: false, message: error instanceof Error ? error.message : 'An unknown error occurred' });
             }
             break;
         default:
-            res.status(400).json({ success: false });
+            res.status(400).json({ success: false, message: 'Method not allowed' });
             break;
     }
 };
