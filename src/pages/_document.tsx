@@ -5,8 +5,10 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-        <link rel="icon" href="/icons/Logo.svg" type="image/svg+xml" />
-        <title>Task Management</title>
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="icon" href="/icons/Logo.svg" type="image/svg+xml" />
+          <meta name="theme-color" content="#000000" />
+          <title>Task Management</title>
         </Head>
         <body>
           <Main />
