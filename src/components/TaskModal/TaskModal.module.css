@@ -39,9 +39,12 @@
     font-size: 28px;
     font-weight: bold;
     border: solid 1px #E3E8EF;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* New styles for status options */

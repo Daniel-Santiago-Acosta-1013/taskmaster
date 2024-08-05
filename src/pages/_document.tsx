@@ -5,8 +5,8 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="icon" href="/favicon.ico" />
-          <title>Task Management</title>
+        <link rel="icon" href="/icons/Logo.svg" type="image/svg+xml" />
+        <title>Task Management</title>
         </Head>
         <body>
           <Main />

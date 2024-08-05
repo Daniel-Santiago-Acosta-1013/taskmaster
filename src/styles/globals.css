@@ -1,5 +1,12 @@
+@font-face {
+    font-family: 'Outfit';
+    src: url('/fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Outfit', Arial, sans-serif;
     background-color: #f9f9f9;
     margin: 0;
     padding: 0;

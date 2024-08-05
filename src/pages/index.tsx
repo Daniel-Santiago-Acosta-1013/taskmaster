@@ -83,8 +83,13 @@ export default function Home() {
         <>
             {loading && <Loader />}
             <div className={styles.container}>
-                <h1 className={styles.title}>My Task Board</h1>
-                <p className={styles.subtitle}>Tasks to keep organised</p>
+                <div className={styles.titleContainer}>
+                    <img src="./icons/Logo.svg" alt="" />
+                    <div className={styles.subtitleContainer}>
+                        <h1 className={styles.title}>My Task Board</h1>
+                        <p className={styles.subtitle}>Tasks to keep organised</p>
+                    </div>
+                </div>
                 <TaskList tasks={tasks} onTaskClick={handleTaskClick} />
                 <div className={styles.addTaskCard} onClick={handleAddTaskClick}>
                     <img src="./icons/Add_round_duotone.svg" alt="Add Task Icon" />

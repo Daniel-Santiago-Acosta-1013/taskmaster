@@ -5,7 +5,28 @@
     text-align: center;
 }
 
+.titleContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 2pc;
+    margin: 30px 0px;
+} 
+
+.titleContainer img {
+    margin-top: -46px;
+}
+
+.subtitleContainer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 .title {
+    margin: 0;
     font-size: 2.5em;
     color: #333;
 }
